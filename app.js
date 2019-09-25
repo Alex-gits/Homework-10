@@ -66,7 +66,7 @@ const formUsername = document.querySelector('#username');
 const formPhone = document.querySelector('#phone');
 const formWebsite = document.querySelector('#website');
 const addBtn = document.querySelector('button');
-const allForms = document.querySelectorAll('input');
+const allInputs = document.querySelectorAll('input');
 const formWrapper = document.querySelector('.card-body');
 
 // Создаем функции для get и post запросов на сервер
@@ -161,11 +161,9 @@ addBtn.addEventListener('click', event => {
         website: formWebsite.value,
     };
 
-    sendUsers(newUser, response => {
-        createNewLi(response);
-    })
+    sendUsers(newUser, createNewLi);
 
-    allForms.forEach(item => item.value = ''); // Обнуляем содержание инпутов после отправки данных
+    allInputs.forEach(item => item.value = ''); // Обнуляем содержание инпутов после отправки данных
 
     messageSuccess(); // Вызываем функцию, которая выводит и удаляет сообщение об успешном добавлении нового юзера
 })
